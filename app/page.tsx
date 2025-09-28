@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useMiniKit } from "@coinbase/onchainkit/minikit";
-import { minikitConfig } from "../minikit.config";
 import styles from "./page.module.css";
 
 interface Fish {
