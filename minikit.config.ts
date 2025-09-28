@@ -24,7 +24,7 @@ export const minikitConfig = {
     splashBackgroundColor: "#0066cc",
     homeUrl: ROOT_URL,
     webhookUrl: `${ROOT_URL}/api/webhook`,
-    primaryCategory: "games",
+    primaryCategory: "games--111",
     tags: ["pirate", "fishing", "arcade", "octopus", "battle", "mini-game", "adventure", "treasure"],
     heroImageUrl: `${ROOT_URL}/fishing-hero.png`, 
     tagline: "The ultimate pirate adventure awaits!",
