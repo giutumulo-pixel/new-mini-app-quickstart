@@ -10,7 +10,7 @@ export default function Success() {
   
   const handleShare = async () => {
     try {
-      const text = `Yay! I just joined the waitlist for ${minikitConfig.miniapp.name.toUpperCase()}! `;
+      const text = `🎣 I just caught the legendary octopus in ${minikitConfig.miniapp.name}! Can you beat my score? 🐙 `;
       
       const result = await composeCastAsync({
         text: text,
@@ -43,11 +43,11 @@ export default function Success() {
             </div>
           </div>
           
-          <h1 className={styles.title}>Welcome to the {minikitConfig.miniapp.name.toUpperCase()}!</h1>
+          <h1 className={styles.title}>🎉 Great Job! 🎉</h1>
           
           <p className={styles.subtitle}>
-            You&apos;re in! We&apos;ll notify you as soon as we launch.<br />
-            Get ready to experience the future of onchain marketing.
+            You&apos;ve mastered the art of fishing!<br />
+            Share your victory with the world and challenge your friends!
           </p>
 
           <button onClick={handleShare} className={styles.shareButton}>

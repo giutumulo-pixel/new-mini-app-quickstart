@@ -1,133 +1,164 @@
-# Waitlist Mini App Quickstart
+# 🎣 Fischer vs Octopus - Epic Fishing Game
 
-This is a demo Mini App application built using OnchainKit and the Farcaster SDK. Build a waitlist sign-up mini app for your company that can be published to the Base app and Farcaster.
+Un gioco di pesca emozionante dove devi catturare il leggendario polpo! Testa le tue abilità di pescatore in questa mini app per Farcaster e Base.
 
-## Prerequisites
+## 🎮 Come Giocare
 
-Before getting started, make sure you have:
+- **Obiettivo**: Cattura il polpo leggendario e tutti i pesci che puoi!
+- **Controlli**: Premi SPAZIO o clicca "CAST HOOK!" per lanciare l'amo
+- **Punteggio**: Guadagna punti catturando diversi tipi di pesci
+- **Power-up**: Raccogli reperti per ottenere abilità speciali
+- **Vittoria**: Sconfiggi il polpo leggendario per vincere!
 
-* Base app account
-* A [Farcaster](https://farcaster.xyz/) account
-* [Vercel](https://vercel.com/) account for hosting the application
-* [Coinbase Developer Platform](https://portal.cdp.coinbase.com/) Client API Key
+## 🚀 Caratteristiche del Gioco
 
-## Getting Started
+- **Grafica Accattivante**: Animazioni fluide e effetti visivi
+- **Varietà di Pesci**: 4 tipi diversi di pesci con punteggi variabili
+- **Sistema di Punteggio**: Punti diversi per ogni tipo di pesce catturato
+- **Power-up e Reperti**: Raccogli artefatti per abilità speciali
+- **Rete da Pesca**: Power-up che ti permette di catturare più pesci
+- **Timer**: 60 secondi per completare la sfida
+- **Bolle Marine**: Effetti atmosferici per un'esperienza immersiva
 
-### 1. Clone this repository 
+## 🛠 Tecnologie Utilizzate
 
+- **Frontend**: Next.js 15 + React 19 + TypeScript
+- **Web3**: OnchainKit (Coinbase), Wagmi, Viem
+- **Social**: Farcaster Mini App SDK
+- **Styling**: CSS Modules con animazioni avanzate
+- **Deployment**: Vercel
+
+## 📱 Mini App Features
+
+- **Autenticazione Farcaster**: Login sicuro tramite wallet
+- **Condivisione Social**: Condividi i tuoi risultati su Farcaster
+- **Responsive Design**: Ottimizzato per mobile e desktop
+- **Performance**: 60 FPS con animazioni fluide
+
+## 🎯 Meccaniche di Gioco
+
+### Pescatore 🧑‍🌾
+- Posizionato sulla barca
+- Controlla l'amo da pesca
+- Animazione di movimento ondulatorio
+
+### Polpo 🐙
+- Si muove orizzontalmente nell'oceano
+- 4 tentacoli animati che si muovono indipendentemente
+- Perde salute quando viene colpito dall'amo
+- Cambia direzione quando raggiunge i bordi
+
+### Amo da Pesca 🎣
+- Si lancia verso il basso quando attivato
+- Rileva collisioni con il polpo
+- Si resetta automaticamente dopo un certo tempo
+
+### Bolle Marine 💧
+- Effetti atmosferici che salgono dal fondo
+- Diverse dimensioni e velocità
+- Aggiungono realismo all'ambiente marino
+
+## 🏆 Sistema di Punteggio
+
+### 🐟 Tipi di Pesci:
+- **Pesce Piccolo** 🐟: 10 punti
+- **Pesce Medio** 🐠: 25 punti  
+- **Squalo** 🦈: 50 punti
+- **Polpo Leggendario** 🐙: 1000 punti
+
+### 💎 Reperti e Power-up:
+- **Rete da Pesca** 🕸️: 10 secondi di rete per catturare più pesci
+- **Velocità** ⚡: 5 secondi di velocità aumentata
+- **Magnete** 🧲: 8 secondi di attrazione magnetica
+
+### 🎯 Bonus:
+- **+500 punti**: Per ogni colpo al polpo
+- **+2000 punti**: Bonus finale per sconfiggere il polpo
+
+## 🎨 Design e UX
+
+- **Tema Marino**: Gradiente blu che simula l'oceano
+- **Animazioni**: Movimenti fluidi e naturali
+- **Feedback Visivo**: Effetti di collisione e vittoria
+- **UI Intuitiva**: Controlli semplici e chiari
+
+## 🚀 Avvio Rapido
+
+### 1. Installa le dipendenze
 ```bash
-git clone https://github.com/base/demos.git
-```
-
-### 2. Install dependencies:
-
-```bash
-cd demos/minikit/waitlist-mini-app-qs
 npm install
 ```
 
-### 3. Configure environment variables
-
-Create a `.env.local` file and add your environment variables:
-
+### 2. Configura le variabili d'ambiente
+Crea un file `.env.local`:
 ```bash
-NEXT_PUBLIC_PROJECT_NAME="Your App Name"
-NEXT_PUBLIC_ONCHAINKIT_API_KEY=<Replace-WITH-YOUR-CDP-API-KEY>
-NEXT_PUBLIC_URL=
+NEXT_PUBLIC_PROJECT_NAME="Fischer vs Octopus"
+NEXT_PUBLIC_ONCHAINKIT_API_KEY=<YOUR-CDP-API-KEY>
+NEXT_PUBLIC_URL=http://localhost:3000
 ```
 
-### 4. Run locally:
-
+### 3. Avvia il server di sviluppo
 ```bash
 npm run dev
 ```
 
-## Customization
+### 4. Apri nel browser
+Vai su `http://localhost:3000`
 
-### Update Manifest Configuration
+## 📦 Build e Deploy
 
-The `minikit.config.ts` file configures your manifest located at `app/.well-known/farcaster.json`.
+### Build per produzione
+```bash
+npm run build
+```
 
-**Skip the `accountAssociation` object for now.**
-
-To personalize your app, change the `name`, `subtitle`, and `description` fields and add images to your `/public` folder. Then update their URLs in the file.
-
-## Deployment
-
-### 1. Deploy to Vercel
-
+### Deploy su Vercel
 ```bash
 vercel --prod
 ```
 
-You should have a URL deployed to a domain similar to: `https://your-vercel-project-name.vercel.app/`
+## 🎮 Controlli del Gioco
 
-### 2. Update environment variables
+| Azione | Controllo |
+|--------|-----------|
+| Lanciare l'amo | SPAZIO o Click su "CAST HOOK!" |
+| Ripetere il gioco | Click su "Play Again" |
+| Condividere | Click su "SHARE" (nella pagina di successo) |
 
-Add your production URL to your local `.env` file:
+## 🐛 Risoluzione Problemi
 
-```bash
-NEXT_PUBLIC_PROJECT_NAME="Your App Name"
-NEXT_PUBLIC_ONCHAINKIT_API_KEY=<Replace-WITH-YOUR-CDP-API-KEY>
-NEXT_PUBLIC_URL=https://your-vercel-project-name.vercel.app/
-```
+### Il gioco non si avvia
+- Verifica che tutte le dipendenze siano installate
+- Controlla la console per errori JavaScript
+- Assicurati che il server di sviluppo sia in esecuzione
 
-### 3. Upload environment variables to Vercel
+### Problemi di performance
+- Chiudi altre applicazioni per liberare memoria
+- Usa un browser aggiornato
+- Verifica la connessione internet
 
-Add environment variables to your production environment:
+## 🤝 Contributi
 
-```bash
-vercel env add NEXT_PUBLIC_PROJECT_NAME production
-vercel env add NEXT_PUBLIC_ONCHAINKIT_API_KEY production
-vercel env add NEXT_PUBLIC_URL production
-```
+Questo è un progetto demo per mostrare le capacità delle Mini App su Farcaster e Base. Sentiti libero di:
 
-## Account Association
+- Forkare il repository
+- Suggerire miglioramenti
+- Creare nuove funzionalità
+- Segnalare bug
 
-### 1. Sign Your Manifest
+## 📄 Licenza
 
-1. Navigate to [Farcaster Manifest tool](https://farcaster.xyz/~/developers/mini-apps/manifest)
-2. Paste your domain in the form field (ex: your-vercel-project-name.vercel.app)
-3. Click the `Generate account association` button and follow the on-screen instructions for signing with your Farcaster wallet
-4. Copy the `accountAssociation` object
+Questo progetto è rilasciato sotto licenza MIT. Vedi il file LICENSE per i dettagli.
 
-### 2. Update Configuration
+## 🎯 Roadmap Futura
 
-Update your `minikit.config.ts` file to include the `accountAssociation` object:
+- [ ] Sistema di leaderboard globale
+- [ ] Power-up e potenziamenti
+- [ ] Modalità multiplayer
+- [ ] Nuovi tipi di pesci da catturare
+- [ ] Effetti sonori e musica
+- [ ] Achievement e trofei
 
-```ts
-export const minikitConfig = {
-    accountAssociation: {
-        "header": "your-header-here",
-        "payload": "your-payload-here",
-        "signature": "your-signature-here"
-    },
-    frame: {
-        // ... rest of your frame configuration
-    },
-}
-```
+---
 
-### 3. Deploy Updates
-
-```bash
-vercel --prod
-```
-
-## Testing and Publishing
-
-### 1. Preview Your App
-
-Go to [base.dev/preview](https://base.dev/preview) to validate your app:
-
-1. Add your app URL to view the embeds and click the launch button to verify the app launches as expected
-2. Use the "Account association" tab to verify the association credentials were created correctly
-3. Use the "Metadata" tab to see the metadata added from the manifest and identify any missing fields
-
-### 2. Publish to Base App
-
-To publish your app, create a post in the Base app with your app's URL.
-
-## Learn More
-
-For detailed step-by-step instructions, see the [Create a Mini App tutorial](https://docs.base.org/docs/mini-apps/quickstart/create-new-miniapp/) in the Base documentation.
+**Buona pesca! 🎣🐙**

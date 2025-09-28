@@ -1,126 +1,399 @@
-.container {
-  display: flex;
-  flex-direction: column;
+.gameContainer {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-  color: white;
+  background: linear-gradient(180deg, #87CEEB 0%, #4682B4 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
   position: relative;
+  overflow: hidden;
 }
 
-.closeButton {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.closeButton:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  padding: 2rem;
-}
-
-.waitlistForm {
+.gameHeader {
   text-align: center;
-  max-width: 600px;
-  width: 100%;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  z-index: 10;
 }
 
-.title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+.gameHeader h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
 }
 
-.subtitle {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 3rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 300;
-}
-
-.form {
+.gameStats {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
+  gap: 20px;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: rgba(0,0,0,0.3);
+  padding: 10px 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
 }
 
-.emailInput {
+.powerUpIndicator {
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  animation: pulse 1s ease-in-out infinite alternate;
+}
+
+.gameArea {
+  flex: 1;
   width: 100%;
   max-width: 400px;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  position: relative;
+  background: linear-gradient(180deg, #87CEEB 0%, #1e3a8a 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border: 3px solid #fff;
+}
+
+.ocean {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%),
+    linear-gradient(180deg, #87CEEB 0%, #4682B4 30%, #1e3a8a 100%);
+  overflow: hidden;
+}
+
+.ocean::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(135, 206, 235, 0.8) 0%, rgba(135, 206, 235, 0.3) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ocean::after {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.3) 80%, transparent 100%);
+  z-index: 3;
+  pointer-events: none;
+  animation: waterLine 3s ease-in-out infinite;
+}
+
+.boat {
+  position: absolute;
+  font-size: 2.5rem;
+  z-index: 12;
+  animation: bob 2s ease-in-out infinite;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.fisherman {
+  position: absolute;
+  font-size: 3rem;
+  z-index: 15;
+  animation: bob 2s ease-in-out infinite;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.octopus {
+  position: absolute;
+  font-size: 3rem;
+  z-index: 5;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.fishingRod {
+  position: absolute;
+  font-size: 1.2rem;
+  z-index: 14;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+  transform-origin: bottom left;
+  transition: transform 0.1s ease-out;
+}
+
+.hook {
+  position: absolute;
+  font-size: 1.2rem;
+  z-index: 8;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+  transition: top 0.1s linear;
+}
+
+.caughtFish {
+  position: absolute;
+  font-size: 1.5rem;
+  z-index: 9;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+  animation: caughtFishWiggle 0.5s ease-in-out infinite alternate;
+}
+
+.net {
+  position: absolute;
+  font-size: 2rem;
+  z-index: 13;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+  animation: netPulse 0.5s ease-in-out infinite alternate;
+}
+
+.tentacle {
+  position: absolute;
+  font-size: 1.2rem;
+  z-index: 4;
+  animation: wiggle 2s ease-in-out infinite;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  animation: bubbleUp 3s linear infinite;
+  z-index: 1;
+}
+
+.fish {
+  position: absolute;
+  z-index: 6;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+  /* No vertical swimming animation - fish move only horizontally */
+}
+
+.healthBar {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background: rgba(255,0,0,0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.healthFill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00);
+  transition: width 0.3s ease;
+}
+
+.artifact {
+  position: absolute;
+  font-size: 1.5rem;
+  z-index: 7;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+  animation: artifactGlow 2s ease-in-out infinite;
+}
+
+.gameControls {
+  margin-top: 20px;
+  text-align: center;
+  z-index: 10;
+}
+
+.castButton {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
   color: white;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.emailInput::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.emailInput:focus {
-  outline: none;
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-.error {
-  color: #ff6b6b;
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.joinButton {
-  background: #f7d954;
-  color: #000;
   border: none;
-  padding: 1rem 3rem;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 12px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 25px;
   cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 1rem;
-  box-shadow: 0 4px 20px rgba(247, 217, 84, 0.3);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-.joinButton:hover {
-  background: #f5d73a;
+.castButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(247, 217, 84, 0.4);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.4);
+  background: linear-gradient(45deg, #ff5252, #d63031);
+}
+
+.castButton:active {
+  transform: translateY(0px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.castButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.instructions {
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.2);
+  padding: 8px 15px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.gameOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.gameOverlay h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+  animation: pulse 1s ease-in-out infinite alternate;
+}
+
+.gameOverlay p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.playAgainButton {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.playAgainButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.4);
+  background: linear-gradient(45deg, #45a049, #4CAF50);
+}
+
+.playAgainButton:active {
+  transform: translateY(0px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Animations */
+@keyframes bob {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes waterLine {
+  0%, 100% { 
+    transform: translateX(-10px);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateX(10px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+@keyframes bubbleUp {
+  0% { 
+    transform: translateY(0px) scale(0.5);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(-400px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+
+@keyframes artifactGlow {
+  0%, 100% { 
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)) brightness(1);
+  }
+  50% { 
+    filter: drop-shadow(2px 2px 8px rgba(255,255,0,0.5)) brightness(1.3);
+  }
+}
+
+@keyframes netPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+@keyframes caughtFishWiggle {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .gameHeader h1 {
+    font-size: 2rem;
+  }
+  
+  .gameStats {
+  font-size: 1rem;
+    gap: 15px;
+  }
+  
+  .ocean {
+    height: 350px;
+  }
+  
+  .fisherman, .octopus {
+    font-size: 2.5rem;
+  }
+  
+  .castButton {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+  }
 }
