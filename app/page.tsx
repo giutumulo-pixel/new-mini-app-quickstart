@@ -322,7 +322,7 @@ export default function FishingGame() {
   return (
     <div className={styles.gameContainer} onKeyDown={handleKeyPress} tabIndex={0}>
       <div className={styles.gameHeader}>
-        <h1>🎣 {minikitConfig.miniapp.name} 🐙</h1>
+        <h1>🏴‍☠️ Pirate vs Octopus 🐙</h1>
         <div className={styles.gameStats}>
           <div>Score: {Math.floor(gameState.score)}</div>
           <div>Time: {Math.ceil(gameState.timeLeft)}s</div>
@@ -345,20 +345,20 @@ export default function FishingGame() {
             />
           ))}
           
-          {/* Boat */}
+          {/* Pirate Ship */}
           <div 
             className={styles.boat}
             style={{ left: gameState.fisherman.x - 20, top: gameState.fisherman.y + 10 }}
           >
-            🚤
+            ⛵
           </div>
           
-          {/* Fisherman */}
+          {/* Pirate */}
           <div 
             className={styles.fisherman}
             style={{ left: gameState.fisherman.x, top: gameState.fisherman.y }}
           >
-            🧑‍🌾
+            🏴‍☠️
           </div>
           
           {/* Fishing Rod */}
@@ -432,20 +432,20 @@ export default function FishingGame() {
           className={styles.castButton}
           disabled={gameState.gameStatus !== 'playing' || gameState.hook.active}
         >
-          CAST HOOK! 🎣
+          CAST HOOK! 🏴‍☠️
         </button>
         <p className={styles.instructions}>
-          Press SPACE to cast your hook when the rod is in the right position!
+          Press SPACE to cast your hook, pirate! Arrr! 🏴‍☠️
         </p>
       </div>
 
       {gameState.gameStatus === 'gameOver' && (
         <div className={styles.gameOverlay}>
           <h2>Game Over! 🐙</h2>
-          <p>The octopus got away!</p>
+          <p>The octopus escaped, pirate! Better luck next time!</p>
           <p>Final Score: {Math.floor(gameState.score)}</p>
           <button onClick={resetGame} className={styles.playAgainButton}>
-            Play Again
+            Sail Again! 🏴‍☠️
           </button>
         </div>
       )}
@@ -453,10 +453,10 @@ export default function FishingGame() {
       {gameState.gameStatus === 'victory' && (
         <div className={styles.gameOverlay}>
           <h2>Victory! 🏆</h2>
-          <p>You defeated the legendary octopus!</p>
+          <p>Arrr! You defeated the legendary octopus, pirate!</p>
           <p>Final Score: {Math.floor(gameState.score)}</p>
           <button onClick={resetGame} className={styles.playAgainButton}>
-            Play Again
+            Sail Again! 🏴‍☠️
           </button>
         </div>
       )}
