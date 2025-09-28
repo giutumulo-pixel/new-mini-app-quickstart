@@ -669,8 +669,8 @@ export default function FishingGame() {
 
       {gameState.gameStatus === 'gameOver' && (
         <div className={styles.gameOverlay}>
-          <h2>Time's Up! ⏰</h2>
-          <p>You didn't reach 5000 points in time, pirate!</p>
+          <h2>Time&apos;s Up! ⏰</h2>
+          <p>You didn&apos;t reach 5000 points in time, pirate!</p>
           <p>Final Score: {Math.floor(gameState.score)} / 5000</p>
           <p>You needed {5000 - Math.floor(gameState.score)} more points!</p>
           <button onClick={resetGame} className={styles.playAgainButton}>
